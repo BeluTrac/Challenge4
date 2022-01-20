@@ -16,7 +16,7 @@ class MainRepository() {
     private fun parseCryptoResult(cryptoJsonResponse: CryptoJsonResponse): MutableList<Crypto> {
         val cryptoList = mutableListOf<Crypto>()
         val entriesList = cryptoJsonResponse.entries
-
+        var id=1
         for (entry in entriesList)
         {
             val name = entry.nombre
@@ -24,7 +24,8 @@ class MainRepository() {
             val imgUrl = entry.imagen.path
             val prize = entry.precio
             val abbreviation = entry.abreviatura
-            cryptoList.add(Crypto(name,time,imgUrl,prize,abbreviation))
+            id++
+            cryptoList.add(Crypto(id,name,time,imgUrl,prize,abbreviation))
         }
         return cryptoList
     }

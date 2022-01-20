@@ -1,6 +1,7 @@
 package com.munidigital.bc2201.challenge4.api
 
 data class Crypto(
+    val id:Int,
     val name: String,
     val time: String,
     val imgUrl: String,
