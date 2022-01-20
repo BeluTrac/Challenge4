@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">challenge4</string>
+    <string name="app_name">Criptomonedas</string>
+    <string name="loading">Cargando...</string>
+    <string name="clickForMoreInfo">Click para mas información</string>
 </resources>
