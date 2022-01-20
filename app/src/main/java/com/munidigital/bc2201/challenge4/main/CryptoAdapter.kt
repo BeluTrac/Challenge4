@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.munidigital.bc2201.challenge4.api.Crypto
 import com.munidigital.bc2201.challenge4.databinding.CryptoListItemBinding
 
-class CryptoAdapter(val context: Context) : ListAdapter<Crypto, CryptoAdapter.ViewHolder>(
+class CryptoAdapter(): ListAdapter<Crypto, CryptoAdapter.ViewHolder>(
     DiffCallback
 ) {
 
