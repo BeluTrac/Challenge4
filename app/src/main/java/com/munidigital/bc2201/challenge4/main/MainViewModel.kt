@@ -7,7 +7,7 @@ import com.munidigital.bc2201.challenge4.api.Crypto
 import com.munidigital.bc2201.challenge4.api.MainRepository
 import kotlinx.coroutines.launch
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
+class MainViewModel() : ViewModel() {
 
    private var repository = MainRepository()
 

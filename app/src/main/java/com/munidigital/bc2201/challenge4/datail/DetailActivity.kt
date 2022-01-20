@@ -2,6 +2,7 @@ package com.munidigital.bc2201.challenge4.datail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.munidigital.bc2201.challenge4.R
 
 class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

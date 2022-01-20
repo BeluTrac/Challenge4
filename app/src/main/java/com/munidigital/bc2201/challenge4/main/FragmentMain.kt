@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.munidigital.bc2201.challenge4.R
 import com.munidigital.bc2201.challenge4.databinding.FragmentMainBinding
 
 class FragmentMain : Fragment() {
@@ -17,10 +19,11 @@ class FragmentMain : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentMainBinding.inflate(inflater)
-        val recycler=binding.cryptoRecycler
+        val view = inflater.inflate(R.layout.fragment_main, container, false)
 
-        viewModel= ViewModelProvider(this,MainViewModelFactory(requireActivity().application)).get(MainViewModel::class.java)
+        val recycler=view.findViewById<RecyclerView>(R.id.cryptoRecycler)
+
+        viewModel= ViewModelProvider(this).get(MainViewModel::class.java)
 
         recycler.layoutManager= LinearLayoutManager(requireActivity())
 
@@ -32,7 +35,7 @@ class FragmentMain : Fragment() {
 
         }
 
-        return binding.root
+        return view
     }
 
 }
