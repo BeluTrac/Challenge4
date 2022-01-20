@@ -28,8 +28,6 @@ class MainActivity : AppCompatActivity() {
             viewModel.cryptoList.observe(this){
                 adapter.submitList(it)
             }
-
-            viewModel.reloadCryptos()
         }
 
         Handler(Looper.getMainLooper()).postDelayed(run, SPLASH_DURATION)
