@@ -13,16 +13,14 @@
         android:theme="@style/Theme.Challenge4">
         <activity
             android:name=".main.MainActivity"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".datail.DetailActivity"
-            android:exported="false" />
+
     </application>
 
 </manifest>

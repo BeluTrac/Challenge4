@@ -1,6 +1,7 @@
 package com.munidigital.bc2201.challenge4.main
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -41,8 +42,9 @@ class CryptoAdapter(): ListAdapter<Crypto, CryptoAdapter.ViewHolder>(
 
         RecyclerView.ViewHolder(binding.root) {
         fun bind(crypto: Crypto) {
+            Log.d("PRUEBA",crypto.toString())
             binding.tvNameCrypto.text = crypto.name
-            binding.tvNameAbbreviationCrypto.text = crypto.name
+            binding.tvNameAbbreviationCrypto.text = crypto.abbreviation
 
 
             binding.root.setOnClickListener {
