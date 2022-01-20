@@ -4,7 +4,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 
-class MainRepository {
+class MainRepository() {
 
     suspend fun fetchCrypto() : MutableList<Crypto>{
         return withContext(Dispatchers.IO){
