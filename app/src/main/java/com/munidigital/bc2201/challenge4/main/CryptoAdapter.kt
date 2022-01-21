@@ -3,13 +3,16 @@ package com.munidigital.bc2201.challenge4.main
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.munidigital.bc2201.challenge4.api.Crypto
 import com.munidigital.bc2201.challenge4.databinding.CryptoListItemBinding
 
-class CryptoAdapter(): ListAdapter<Crypto, CryptoAdapter.ViewHolder>(
+class CryptoAdapter(val activity: MainActivity): ListAdapter<Crypto, CryptoAdapter.ViewHolder>(
     DiffCallback
 ) {
 
@@ -23,9 +26,8 @@ class CryptoAdapter(): ListAdapter<Crypto, CryptoAdapter.ViewHolder>(
         }
     }
 
-    private lateinit var onItemClickListener: (Crypto)->Unit
-
-
+    lateinit var onItemClickListener: (Crypto)->Unit
+    lateinit var chargeImage: (Crypto)->Unit
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = CryptoListItemBinding.inflate(LayoutInflater.from(parent.context))
@@ -43,12 +45,14 @@ class CryptoAdapter(): ListAdapter<Crypto, CryptoAdapter.ViewHolder>(
         fun bind(crypto: Crypto) {
             binding.tvNameCrypto.text = crypto.name
             binding.tvNameAbbreviationCrypto.text = crypto.name
-
+            val img=binding.imgCrypto
+            Glide.with(activity).load(crypto.imgUrl).into(img)
 
             binding.root.setOnClickListener {
                 if (::onItemClickListener.isInitialized) {
                     onItemClickListener(crypto)
                 }
+
             }
         }
     }

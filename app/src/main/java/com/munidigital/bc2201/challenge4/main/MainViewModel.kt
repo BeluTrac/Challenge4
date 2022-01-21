@@ -1,11 +1,13 @@
 package com.munidigital.bc2201.challenge4.main
 
-import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
+import com.munidigital.bc2201.challenge4.api.ApiResponseStatus
 import com.munidigital.bc2201.challenge4.api.Crypto
 import com.munidigital.bc2201.challenge4.api.MainRepository
 import kotlinx.coroutines.launch
+import java.net.UnknownHostException
+import java.util.logging.Handler
 
 class MainViewModel() : ViewModel() {
 
@@ -15,11 +17,22 @@ class MainViewModel() : ViewModel() {
     val cryptoList : LiveData<MutableList<Crypto>>
         get() = _cryptoList
 
-    fun reloadCryptos(){
-        viewModelScope.launch {
+    private val _status= MutableLiveData<ApiResponseStatus>()
+    val status:LiveData<ApiResponseStatus>
+    get() = _status
 
-            _cryptoList.value =  repository.fetchCrypto()
-            Log.d("PRUEBA", _cryptoList.value.toString())
+    init {
+        viewModelScope.launch {
+            try {
+                _status.value=ApiResponseStatus.LOADING
+                _cryptoList.value = repository.fetchCrypto()
+                _status.value=ApiResponseStatus.DONE
+            }
+            catch (e: UnknownHostException){
+                _status.value=ApiResponseStatus.ERROR
+            }
         }
     }
+
+
 }
