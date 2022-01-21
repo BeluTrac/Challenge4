@@ -8,15 +8,14 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.munidigital.bc2201.challenge4.R
 import com.munidigital.bc2201.challenge4.api.ApiResponseStatus
 import com.munidigital.bc2201.challenge4.api.Crypto
 import com.munidigital.bc2201.challenge4.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
-    private val SPLASH_DURATION:Long=3000
+class MainActivity : AppCompatActivity(), MainFragment.CryptoSelectListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MainViewModel
 
@@ -26,25 +25,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        binding.cryptoRecycler.layoutManager= LinearLayoutManager(this)
-        val adapter=CryptoAdapter(this)
-        binding.cryptoRecycler.adapter=adapter
-        viewModel= ViewModelProvider(this).get(MainViewModel::class.java)
 
-        viewModel.cryptoList.observe(this) {
-            adapter.submitList(it)
-        }
-        viewModel.status.observe(this){
-              when{(it== ApiResponseStatus.LOADING)->binding.cryptoEmptyView.visibility = View.VISIBLE
-
-                  (it==ApiResponseStatus.DONE)->binding.cryptoEmptyView.visibility= View.GONE
-
-                  (it==ApiResponseStatus.ERROR)->binding.cryptoEmptyView.visibility= View.GONE
-
-                   }
-              }
+    }
 
 
+    override fun onCryptoSelected(crypto : Crypto){
+        Log.d("PRUEBA",crypto.toString())
+        findNavController(R.id.main_navigation_container).navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(crypto))
     }
 
 

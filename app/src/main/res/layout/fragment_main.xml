@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <include android:id="@+id/toolbar_main"
+        layout="@layout/toolbar_main" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/toolbar_main"
+        android:id="@+id/cryptoRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/cryptoEmptyView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/loading"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:visibility="visible" />
+    </FrameLayout>
+
+</RelativeLayout>

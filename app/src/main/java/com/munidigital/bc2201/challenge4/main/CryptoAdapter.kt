@@ -1,5 +1,6 @@
 package com.munidigital.bc2201.challenge4.main
 
+import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,7 +13,7 @@ import com.bumptech.glide.Glide
 import com.munidigital.bc2201.challenge4.api.Crypto
 import com.munidigital.bc2201.challenge4.databinding.CryptoListItemBinding
 
-class CryptoAdapter(val activity: MainActivity): ListAdapter<Crypto, CryptoAdapter.ViewHolder>(
+class CryptoAdapter(val activity: Activity): ListAdapter<Crypto, CryptoAdapter.ViewHolder>(
     DiffCallback
 ) {
 
